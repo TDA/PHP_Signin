@@ -6,7 +6,9 @@
 hi
 <br>
 
-<div class="summary">hi</div>
+<div class="summary">
+    <a href="signinpage.html">Click meee</a>
+</div>
 <script>
 $(document).ready(function() {
     $('div.summary a').click(function (e) {
@@ -19,18 +21,19 @@ $(document).ready(function() {
 
 
     function updateDB(type, element) {
+        console.log(type, element.name);
         $.ajax({
             url: '/updateDB.php',
             method: 'post',
             data: {
                 eventName: type,
-                element: element
+                element: element.name
             },
-            onError: function (error) {
-                alert(error)
+            error: function (error) {
+                console.log(JSON.stringify(error.responseText));
             }
         }).done(function() {
-           console.log("Done")
+           console.log("Done");
         });
     }
 });
