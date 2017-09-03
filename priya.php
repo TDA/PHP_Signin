@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['username'])){
 echo 'Welcome priya';
-include('stack.html');
+include('stack.php');
 }
 else{
 	echo 'Please login';
