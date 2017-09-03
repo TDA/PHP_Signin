@@ -13,6 +13,7 @@ $(document).ready(function() {
         e.preventDefault();
         var url = $(this).attr('href');
         updateDB(e.type, this);
+        window.location = url;
     });
     // Do similar for the other event handlers
 
