@@ -9,10 +9,31 @@ hi
 <div class="summary">hi</div>
 <script>
 $(document).ready(function() {
-    $('.summary').click(function () {
-        displayDate();
+    $('div.summary a').click(function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        updateDB(e.type, this);
     });
+    // Do similar for the other event handlers
+
+
+    function updateDB(type, element) {
+        $.ajax({
+            url: '/updateDB.php',
+            method: 'post',
+            data: {
+                eventName: type,
+                element: element
+            },
+            onError: function (error) {
+                alert(error)
+            }
+        }).done(function() {
+           console.log("Done")
+        });
+    }
 });
+
 </script>
 	
 </body>
